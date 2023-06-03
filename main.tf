@@ -23,6 +23,9 @@ resource "google_cloud_run_v2_service" "default" {
   template {
     containers {
       image = "rocker/shiny"
+      ports {
+        container_port = 3838
+      }
     }
   }
 }
