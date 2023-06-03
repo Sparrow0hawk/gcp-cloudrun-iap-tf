@@ -21,7 +21,7 @@ gcloud iam service-accounts create terrashiny \
 
 gcloud projects add-iam-policy-binding test-cloud-run-iap \
     --member="serviceAccount:terrashiny@test-cloud-run-iap.iam.gserviceaccount.com" \
-    --role="roles/editor"
+    --role="roles/owner"
 
 gcloud iam service-accounts keys create .credentials.json \
     --iam-account=terrashiny@test-cloud-run-iap.iam.gserviceaccount.com
