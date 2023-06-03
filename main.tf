@@ -22,7 +22,7 @@ resource "google_cloud_run_v2_service" "default" {
 
   template {
     containers {
-      image = "https://hub.docker.com/r/rocker/shiny"
+      image = "rocker/shiny"
     }
   }
 }
