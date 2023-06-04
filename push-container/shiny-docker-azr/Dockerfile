@@ -1,5 +1,5 @@
 # Install R version 3.5
-FROM rocker/shiny:latest
+FROM rocker/shiny
 
 # Install Ubuntu packages
 RUN apt-get update && \
@@ -9,11 +9,7 @@ RUN apt-get update && \
 
 # Copy configuration files into the Docker image
 COPY . /app
-COPY ./renv.lock ./renv.lock
 
-# install renv & restore packages
-RUN Rscript -e 'install.packages("renv")'
-RUN Rscript -e 'renv::restore()'
 
 # Make the ShinyApp available at port 80
 EXPOSE 3838
