@@ -22,7 +22,7 @@ resource "google_artifact_registry_repository" "my-repo" {
   format        = "DOCKER"
 
   provisioner "local-exec" {
-    command = "ansible-playbook main-playbook.yml -e 'credential_file=${var.credentials_file} registry_url=${google_container_registry.registry.bucket_self_link} image_name=${var.image_name}'"
+    command = "ansible-playbook push-container/main-playbook.yml -e 'credentials_file=../${var.credentials_file} registry_url=${var.region}-docker.pkg.dev/${var.project}/${google_artifact_registry_repository.my-repo.repository_id} image_name=${var.image_name}'"
   }
 }
 
