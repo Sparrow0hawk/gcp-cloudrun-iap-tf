@@ -15,6 +15,14 @@ provider "google" {
   zone    = var.zone
 }
 
+module "deploy-container-registry" {
+  source           = "./push-container"
+  project          = var.project
+  credentials_file = var.credentials_file
+  region           = var.region
+  zone             = var.zone
+}
+
 resource "google_cloud_run_v2_service" "default" {
   name     = "hello-shiny"
   location = var.region
@@ -22,7 +30,7 @@ resource "google_cloud_run_v2_service" "default" {
 
   template {
     containers {
-      image = "rocker/shiny"
+      image = join("", [module.deploy-container-registry.container_registry_url, module.deploy-container-registry.image_name])
       ports {
         container_port = 3838
       }
