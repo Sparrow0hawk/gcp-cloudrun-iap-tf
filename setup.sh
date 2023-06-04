@@ -11,8 +11,8 @@ gcloud beta billing projects link test-cloud-run-iap \
 gcloud services enable \
     run.googleapis.com \
     iap.googleapis.com \
-    iam.googleapis.com
-    #containerregistry.googleapis.com \
+    iam.googleapis.com \
+    artifactregistry.googleapis.com
     #compute.googleapis.com \
     #vpcaccess.googleapis.com
 
