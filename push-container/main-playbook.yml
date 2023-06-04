@@ -1,0 +1,25 @@
+---
+- name: Hello world playbook
+  hosts: localhost
+  tasks:
+    - name: Hello world
+      debug: msg="Hello world!"
+
+    - name: Log into DockerHub using a custom config file
+      community.docker.docker_login:
+        registry: "{{ registry_url }}" # variabled passed in by tf
+        username: _json_key
+        password: " {{ lookup('file', credentials_file) }}" # variable passed in by tf
+
+    - name: Build an image and push it to a private repo
+      community.docker.docker_image:
+        build:
+          path: ./shiny-docker-azr
+        name: "{{ registry_url }}/{{ image_name }}"
+        push: true
+        source: build
+
+    - name: Log out of DockerHub
+      community.docker.docker_login:
+        registry: "{{ registry_url }}"
+        state: absent
