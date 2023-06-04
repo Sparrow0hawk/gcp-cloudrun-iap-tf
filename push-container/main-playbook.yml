@@ -16,7 +16,6 @@
         build:
           path: ./shiny-docker-azr
         name: "{{ registry_url }}/{{ image_name }}"
-        tag: v1
         push: true
         source: build
 
