@@ -1,11 +1,8 @@
-output "gcr-bucket" {
-  value = google_container_registry.registry.id
-}
-
 output "container_registry_url" {
-  value = google_container_registry.registry.bucket_self_link
+  value = "${var.region}-docker.pkg.dev/${var.project}/${google_artifact_registry_repository.my-repo.repository_id}}"
 }
 
 output "image_name" {
   value = var.image_name
 }
+
