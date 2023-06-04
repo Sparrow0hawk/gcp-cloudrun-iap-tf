@@ -30,7 +30,7 @@ resource "google_cloud_run_v2_service" "default" {
 
   template {
     containers {
-      image = join("", [module.deploy-container-registry.container_registry_url, module.deploy-container-registry.image_name])
+      image = join("/", [module.deploy-container-registry.container_registry_url, module.deploy-container-registry.image_name])
       ports {
         container_port = 3838
       }
