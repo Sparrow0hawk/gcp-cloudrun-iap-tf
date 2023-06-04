@@ -9,3 +9,5 @@ packaging==23.1
 pycparser==2.21
 PyYAML==6.0
 resolvelib==1.0.1
+requests
+google-auth
